@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.countervalorantapex.contractmanagement.sys.mapper.ContractTypesInfoDTOMapper">
+    <select id="getCustomersAndMoney" resultType="com.countervalorantapex.contractmanagement.sys.dto.ContractTypesInfoDTO">
+        SELECT ci.customer_name, SUM(cti.amount) AS total_amount
+        FROM contract_info AS ci
+                 JOIN contract_types_info AS cti ON ci.contract_name = cti.contract_name
+        GROUP BY ci.customer_name;
+    </select>
+
+</mapper>

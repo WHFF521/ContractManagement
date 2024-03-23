@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.countervalorantapex.contractmanagement.sys.mapper.CustomersLevelDTOMapper">
+    <select id="getLevelDistribution" resultType="com.countervalorantapex.contractmanagement.sys.dto.CustomersLevelDTO">
+        SELECT customer_level, COUNT(*) AS count
+        FROM customers
+        GROUP BY customer_level;
+    </select>
+
+</mapper>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.countervalorantapex.contractmanagement.sys.mapper.ContractInfoMapper">
+    <insert id="addContractInfo" parameterType="com.countervalorantapex.contractmanagement.sys.entity.ContractInfo">
+        insert into contract_info(contract_name,customer_name,account_manager_name,contract_number,bg,bu,
+                                  industry,sub_industry,project_type,region,institution,province,product_line,
+                                  party_b,currency,gross_margin,price_list,performance_bonds,other,type_number,
+                                  maintenance_period,rate_total,signing_status,payment_method)
+        values (#{aci.contractName},#{aci.customerName},#{aci.accountManagerName},#{aci.contractNumber},#{aci.bg},
+                #{aci.bu},#{aci.industry},#{aci.subIndustry},#{aci.projectType},#{aci.region},
+                #{aci.institution},#{aci.province},#{aci.productLine},#{aci.partyB},#{aci.currency},
+                #{aci.grossMargin},#{aci.priceList},#{aci.performanceBonds},#{aci.other},#{aci.typeNumber},
+                #{aci.maintenancePeriod},#{aci.rateTotal},#{aci.signingStatus},#{aci.paymentMethod})
+    </insert>
+</mapper>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.countervalorantapex.contractmanagement.sys.mapper.WeeklyReportsMapper">
+    <select id="getWeeklyReportById" resultType="com.countervalorantapex.contractmanagement.sys.entity.WeeklyReports">
+        SELECT * FROM weekly_reports WHERE report_id = #{reportId}
+    </select>
+
+    <select id="getChaxunById" resultType="com.countervalorantapex.contractmanagement.sys.entity.WeeklyReports">
+        select report_date,supervisor_account,attendance_status,work_this_week,work_next_week
+        FROM weekly_reports
+        WHERE report_id=#{reportId}
+    </select>
+
+    <insert id="insertWeeklyReport" parameterType="com.countervalorantapex.contractmanagement.sys.entity.WeeklyReports">
+        INSERT INTO weekly_reports (manager_account, supervisor_name, report_date, attendance_status, work_this_week, work_next_week )
+        VALUES (#{managerAccount}, #{supervisorName}, #{reportDate}, #{attendanceStatus}, #{workThisWeek}, #{workNextWeek} )
+    </insert>
+
+    <update id="updateWeeklyReport">
+        UPDATE weekly_reports
+        SET manager_account = #{managerAccount}, supervisor_account = #{supervisorAccount}, report_status = #{reportStatus}, report_comment = #{reportComment},
+        report_date = #{reportDate}, attendance_status = #{attendanceStatus}, work_this_week = #{workThisWeek}, work_next_week = #{workNextWeek}, delete_control = #{deleteControl}
+        WHERE report_id = #{reportId}
+    </update>
+
+    <delete id="deleteWeeklyReport">
+        DELETE FROM weekly_reports WHERE report_id = #{reportId}
+    </delete>
+
+    <select id="findAll" resultType="com.countervalorantapex.contractmanagement.sys.entity.WeeklyReports">
+        SELECT *
+        FROM weekly_reports
+        ORDER BY report_id DESC;
+    </select>
+
+    <update id="setScore">
+        UPDATE weekly_reports SET report_comment = #{reportComment}, score = #{score} where report_id = #{reportId}
+    </update>
+</mapper>

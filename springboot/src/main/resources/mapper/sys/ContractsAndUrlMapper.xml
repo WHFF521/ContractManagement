@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.countervalorantapex.contractmanagement.sys.mapper.ContractsAndUrlMapper">
+    <select id="getContractPage" resultType="com.countervalorantapex.contractmanagement.sys.dto.ContractsAndUrlDTO">
+        SELECT c.contract_name, c.sign_date, c.contract_total, c.contract_content, ci.customer_name
+        FROM contracts c
+        INNER JOIN contract_info ci ON c.contract_name = ci.contract_name
+        WHERE c.state = #{state}
+        <if test="year != null">
+            AND YEAR(c.sign_date) = #{year}
+        </if>
+        <if test="contractName != null">
+            AND c.contract_name LIKE CONCAT('%', #{contractName}, '%')
+        </if>
+        <if test="userAccount != null">
+            AND c.user_account = #{userAccount}
+        </if>
+    </select>
+
+</mapper>

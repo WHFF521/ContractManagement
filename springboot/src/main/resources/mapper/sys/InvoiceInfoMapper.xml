@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.countervalorantapex.contractmanagement.sys.mapper.InvoiceInfoMapper">
+    <insert id="addInvoiceInfo" parameterType="com.countervalorantapex.contractmanagement.sys.entity.InvoiceInfo">
+        insert into invoice_info(customer_name,company_name,tax_number,phone,address,bank_name,bank_account)
+        values (
+                   #{aII.customerName},#{aII.companyName},#{aII.taxNumber},#{aII.phone},#{aII.address},#{aII.bankName},#{aII.bankAccount}
+               )
+    </insert>
+
+    <select id="getInvoiceInfoByName" resultType="com.countervalorantapex.contractmanagement.sys.entity.InvoiceInfo">
+        select * from invoice_info where customer_name=#{cName}
+    </select>
+
+    <update id="updateInvoiceInfoByName" parameterType="com.countervalorantapex.contractmanagement.sys.entity.InvoiceInfo">
+        UPDATE invoice_info
+        SET company_name=#{upI.companyName},
+            tax_number=#{upI.taxNumber},
+            phone=#{upI.phone},
+            address=#{upI.address},
+            bank_name=#{upI.bankName},
+            bank_account=#{upI.bankAccount}
+        WHERE customer_name = #{upI.customerName};
+
+    </update>
+</mapper>

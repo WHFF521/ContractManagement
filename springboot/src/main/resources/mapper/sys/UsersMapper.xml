@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.countervalorantapex.contractmanagement.sys.mapper.UsersMapper">
+    <select id="findByUsernameOrPhoneNumberOrEmailAndPassword" resultType="com.countervalorantapex.contractmanagement.sys.entity.Users">
+        SELECT * FROM users WHERE user_account = #{identifier} AND user_password = #{password}
+    </select>
+    <select id="getUserNames" resultType="com.countervalorantapex.contractmanagement.sys.entity.Users">
+        SELECT * FROM users
+    </select>
+
+    <select id="getUserByAccount" resultType="com.countervalorantapex.contractmanagement.sys.entity.Users">
+        SELECT * FROM users WHERE user_account = #{user_account}
+    </select>
+
+
+    <insert id="addUser" parameterType="com.countervalorantapex.contractmanagement.sys.entity.Users">
+        INSERT INTO users (user_account, user_password, user_name, user_phone, user_email, user_role)
+        VALUES (#{userAccount}, #{userPassword}, #{userName}, #{userPhone}, #{userEmail}, #{userRole})
+    </insert>
+</mapper>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.countervalorantapex.contractmanagement.sys.mapper.CustomersMapper">
+    <select id="getCustomersByName" resultType="com.countervalorantapex.contractmanagement.sys.entity.Customers">
+        select customer_name,customer_level,industry,postal_code,province,city,county,address from customers where customer_name=#{customersName}
+    </select>
+
+    <select id="findAllCustomers" resultType="com.countervalorantapex.contractmanagement.sys.entity.Customers">
+        select * from customers
+    </select>
+    <insert id="addCustomers" parameterType="com.countervalorantapex.contractmanagement.sys.entity.Customers">
+        insert into customers(customer_name,customer_level,industry,postal_code,province,city,county,address)
+        values (#{addcustomers.customerName},#{addcustomers.customerLevel},#{addcustomers.industry},#{addcustomers.postalCode},
+                #{addcustomers.province},#{addcustomers.city},#{addcustomers.county},#{addcustomers.address})
+    </insert>
+    <select id="findAllCustomerNames" resultType="com.countervalorantapex.contractmanagement.sys.dto.CustomerNameDTO">
+        SELECT customer_name FROM customers
+    </select>
+    <update id="updateCustomersByName" parameterType="com.countervalorantapex.contractmanagement.sys.entity.Customers">
+        UPDATE customers
+        SET customer_level = #{upC.customerLevel},
+            industry = #{upC.industry},
+            postal_code = #{upC.postalCode},
+            province = #{upC.province},
+            city = #{upC.city},
+            county = #{upC.county},
+            address = #{upC.address}
+        WHERE customer_name = #{upC.customerName};
+
+    </update>
+</mapper>

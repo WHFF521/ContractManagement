@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.countervalorantapex.contractmanagement.sys.mapper.ContractTypesInfoMapper">
+    <insert id="addContractTypesInfo" parameterType="com.countervalorantapex.contractmanagement.sys.entity.ContractTypesInfo">
+        insert into contract_types_info(contract_name,contract_type_id,amount,rate,tax_rate)
+        values (
+                   #{acti.contractName},#{acti.contractTypeId},#{acti.amount},#{acti.rate},#{acti.taxRate}
+               )
+    </insert>
+</mapper>
